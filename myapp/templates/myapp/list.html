@@ -1,0 +1,119 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+
+        #picture-btn1{
+            width: 25px;
+            display: inline-block;
+        }
+
+        #picture-btn2{
+            width: 30%;
+            display: inline-block;
+            border-radius: 0%;
+        }
+
+        #yp{
+            color:black;
+        }
+
+        #picture-btn3{
+            width: 12px;
+            display: inline-block;
+            border-radius: 40%;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+
+        <img id="home1" src="{% static 'images/purple.png' %}">
+
+        <div class="left">
+
+            <div class="navbar">
+                <a href="{% url 'signout' %}"><i class="fa fa-fw fa-user"></i> logout</a>
+                <div class="search-box">
+                    <form method="get" action="">
+
+                        <input type="text" id="search" name="search" placeholder="please search here" required>
+                        <button id="bp" type="submit">Search</button>
+        
+                    </form>
+                </div>
+                <a href="{% url 'about' %}"><i class="fa fa-fw fa-info"></i> About</a>
+                <a class="active" href="{% url 'tasks' %}"><i class="fa fa-fw fa-home"></i> Tasks</a>
+                <a href="#"><i class="fa fa-fw fa-meh-blank"></i> hello {{ request.user }},</a>
+
+                
+                </div>
+                
+            </div>
+
+        </div>        
+
+        <div class="center">
+
+            {%if user.is_authenticated %}
+            <br>
+
+            <br>
+            <a href={% url 'create' %}>
+                <img id="picture-btn2" src="{% static 'images/create-button.png' %}">
+            </a>
+            <br>
+
+
+            <br>
+            <table>
+                <tr>
+                    <th>Tasks(click on a task for more details)</th>
+                </tr>
+                
+                {% for tsk in tasks %}
+
+                <tr>
+                    <td>
+                        <div class="pd">
+                            <img id="picture-btn3" src="{% static 'images/tick.png' %}"> <a id="yp" href={% url 'detail' tsk.id %}>{{ tsk.task }}</a>
+                        </div>
+                    </td>
+                    <td>
+                    
+                    </td>
+                    <td>
+                        <a href={% url 'delete' tsk.id %}>
+                            <img id="picture-btn1" src="{% static 'images/delete.png' %}">
+                        </a>
+                        </div>
+                    
+                    </td>
+                </tr>
+
+                {% empty %}
+
+                    <h3>There are no tasks</h3>
+                {% endfor %}
+            </table>
+            {% endif %}
+
+        </div>
+    </div>
+    
+</body>
+</html>

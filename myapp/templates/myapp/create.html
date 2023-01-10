@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+</head>
+<body>
+    
+    <img id = "home1" src="{% static 'images/purple.png' %}">
+
+    <div class="left-corner">
+        <a id="fp" href={% url 'tasks' %}>
+            <img src="{% static 'images/back-button.png' %}">
+        </a>
+    </div>
+    <div class="center">
+        <form method = "post" action = "">
+
+            {% csrf_token %}
+
+            {{form.as_p}}
+
+            <div class="edit-color">
+                <input type="submit" value="submit"/>
+            </div>
+            
+
+        </form>
+    </div>
+
+</body>
+</html>

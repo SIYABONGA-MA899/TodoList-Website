@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+</head>
+<body>
+
+    <img id = "home1" src="{% static 'images/purple.png' %}">
+
+    <div class="left-corner">
+        <a id="fp" href={% url 'tasks' %}>
+            <img src="{% static 'images/back-button.png' %}">
+        </a>
+    </div>
+    <div class="center">
+
+        <div class="word-color">
+            <h4>{{ task.time_created }}</h4>
+        
+        
+    
+            <h1>Task: {{ task}}</h1>
+
+            <h3>{{ task.task_description }}</h3>
+            <br>
+
+            <br>
+        </div>
+        
+        <div class="edit-color">
+            <button><a id="lno" href={% url 'update' task.id %}>edit</a></button>
+        </div>
+    </div>
+    
+
+</body>
+</html>

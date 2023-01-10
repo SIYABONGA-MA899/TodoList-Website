@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignIn</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+    <style>
+        #sb{
+            background-color: greenyellow;
+            width: 100%;
+        }
+    </style>
+
+</head>
+<body>
+
+    <img id = "home1" src="{% static 'images/purple.png' %}">
+
+    <div class="left-corner">
+        <a id="fp" href={% url 'home' %}>
+            <img src="{% static 'images/back-button.png' %}">
+        </a>
+    </div>
+
+    <div class="center">
+
+        {% for message in messages %}
+
+        <div class="alert-alert-{{ messages.tags }} alert-dismissible fade show" role="alert">
+
+            <h1><strong>hello {{ user.first_name }} {{ message }}</strong></h1>
+        </div>
+        {% endfor %}
+    
+        <form method="post" action="">
+
+            {% csrf_token %}
+            {{form.as_p}}
+
+            <div>
+                <input id="sb" type = "submit" value="submit">
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>

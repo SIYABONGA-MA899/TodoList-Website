@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+</head>
+
+
+
+<body>
+    
+    <img id = "home1" src="{% static 'images/picture1.png' %}">
+
+    <div class="center">
+
+        <div class="word-color"><h1><strong>Welcome to my TodoList web-app</strong></h1></div>
+            
+        <br>
+
+        <br>
+        <div class="btn">
+            <button><a href="{% url 'signin' %}">SignIn</a></button>
+            <button><a href="{% url 'signup' %}">SignUp</a></button>
+        </div>
+        <br>
+
+        <br>
+        <p class="word-color">if you forgot your password, click here <a href="{% url 'password_reset' %}">Forgot password?</a></p>
+            
+    </div>
+    
+</body>
+</html>
